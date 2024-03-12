@@ -1,0 +1,97 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!--<editor-fold desc="Body">-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Landing Page</title>
+{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">#}
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="{% static 'js/plotly_lazy_load.js' %}" defer></script>
+</head>
+<!--</editor-fold>-->
+
+<!--<editor-fold desc="Body">-->
+<body class="bg-gray-100 text-gray-800">
+
+    <!--<editor-fold desc="Navbar">-->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <!-- Logo -->
+                    <div>
+                        <a href="#" class="flex items-center py-4 px-2">
+                            <span class="font-semibold text-gray-800 text-lg">BrandName</span>
+                        </a>
+                    </div>
+                    <!-- Primary Navbar items -->
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="#" class="py-4 px-2 text-gray-800 border-b-4 border-transparent hover:border-indigo-500 transition duration-300">Home</a>
+                        <a href="#" class="py-4 px-2 text-gray-800 hover:text-indigo-500 transition duration-300">Services</a>
+                        <a href="#" class="py-4 px-2 text-gray-800 hover:text-indigo-500 transition duration-300">About</a>
+                        <a href="#" class="py-4 px-2 text-gray-800 hover:text-indigo-500 transition duration-300">Contact Us</a>
+                    </div>
+                </div>
+                <!-- Secondary Navbar items -->
+                <div class="hidden md:flex items-center space-x-3 ">
+                    <a href="/login/" class="py-2 px-2 font-medium text-gray-800 rounded hover:bg-indigo-500 hover:text-white transition duration-300">Log In</a>
+                    <a href="/register/" class="py-2 px-2 font-medium text-white bg-primary-500 rounded hover:bg-primary-600 transition duration-300">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Main Content">-->
+    <div class="mt-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <h1 class="text-4xl font-bold text-center text-gray-800 mb-4">Welcome to BrandName</h1>
+            <p class="text-center text-gray-600 mb-6">This is a minimalist landing page using Tailwind CSS.</p>
+        </div>
+
+        <!-- Placeholder untuk plot -->
+        <div class="mx-auto my-6" id="myPlot" style="width:450px;height:300px;"></div>
+
+    </div>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Footer">-->
+    <footer class="bg-primary-200 text-center lg:text-left">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-center items-center lg:justify-between">
+                <div class="mr-12 hidden lg:block">
+                    <span class="text-sm text-gray-500 sm:text-center">©2024 BrandName. All rights reserved.</span>
+                </div>
+                <div class="flex justify-center mt-4 lg:mt-0">
+                    <a href="https://medium.com/@aldiekaw" class="mr-6 text-gray-600">
+                        <i class="fab fa-medium"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/aldiekawahyu/" class="mr-6 text-gray-600">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-4 lg:mt-0 lg:flex lg:justify-between">
+                <p class="text-sm text-gray-500 sm:text-center">Designed by <a href="https://www.yourwebsite.com" class="text-indigo-600 hover:underline">YourName</a></p>
+                <p class="mt-4 lg:mt-0 text-sm text-gray-500 sm:text-center">Implemented by <a href="https://www.yourwebsite.com" class="text-indigo-600 hover:underline">YourCompany</a></p>
+            </div>
+        </div>
+    </footer>
+    <!--</editor-fold>-->
+
+    <script>
+        // Mendapatkan data plot dari Django dan menyimpannya sebagai variabel global
+        let plotData = {{ plot_json|safe }};
+    </script>
+
+</body>
+<!--</editor-fold>-->
+
+</html>
